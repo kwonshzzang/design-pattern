@@ -1,0 +1,5 @@
+#written by FileProperties
+#Fri Dec 12 13:55:37 KST 2025
+month=12
+year=2025
+day=12
