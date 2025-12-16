@@ -3,23 +3,24 @@ package kr.co.kwonshzzang.designpattern.factorymethod.idcard;
 import kr.co.kwonshzzang.designpattern.factorymethod.framework.Factory;
 import kr.co.kwonshzzang.designpattern.factorymethod.framework.Product;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class IDCardFactory extends Factory {
-    private final List<String> owners = new ArrayList<>();
+    private final Map<Integer, Product> database = new HashMap<Integer, Product>();
+    private int serial = 100;
 
     @Override
-    protected Product createProduct(String owner) {
-        return new IDCard(owner);
+    protected synchronized Product createProduct(String owner) {
+        return new IDCard(owner, serial++);
     }
 
     @Override
     protected void registerProduct(Product product) {
-        owners.add(((IDCard)product).getOwner());
+        database.put(serial++, product);
     }
 
-    public List<String> getOwners() {
-        return owners;
+    public Map<Integer, Product> getOwners() {
+        return database;
     }
 }
