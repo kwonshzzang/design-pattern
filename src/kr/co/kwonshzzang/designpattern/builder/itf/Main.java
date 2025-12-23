@@ -1,6 +1,4 @@
-package kr.co.kwonshzzang.designpattern.builder;
-
-import javax.swing.*;
+package kr.co.kwonshzzang.designpattern.builder.itf;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,12 +20,6 @@ public class Main {
             director.construct();
             String filename = htmlBuilder.getResult();
             System.out.println(filename + "가 작성되었습니다.");
-        } else if(args[0].equals("jframe")) {
-            FrameBuilder frameBuilder = new FrameBuilder();
-            Director director = new Director(frameBuilder);
-            director.construct();
-            JFrame frame = frameBuilder.getResult();
-            frame.setVisible(true);
         } else {
             usage();
             System.exit(0);
